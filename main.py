@@ -66,7 +66,6 @@ def get_tokens(line):
             i += total
         elif(line[i] == ' ' or line[i] == '\n'):
             i += 1
-            continue
         else:
             tokens.append('TOK_INVALID')
             i += 1
