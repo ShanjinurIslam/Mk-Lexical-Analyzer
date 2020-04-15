@@ -45,36 +45,11 @@ void vector_add(vector *v, void *item)
     v->items[v->total++] = item;
 }
 
-void vector_set(vector *v, int index, void *item)
-{
-    if (index >= 0 && index < v->total)
-        v->items[index] = item;
-}
-
 void *vector_get(vector *v, int index)
 {
     if (index >= 0 && index < v->total)
         return v->items[index];
     return NULL;
-}
-
-void vector_delete(vector *v, int index)
-{
-    if (index < 0 || index >= v->total)
-        return;
-
-    v->items[index] = NULL;
-
-    for (int i = index; i < v->total - 1; i++)
-    {
-        v->items[i] = v->items[i + 1];
-        v->items[i + 1] = NULL;
-    }
-
-    v->total--;
-
-    if (v->total > 0 && v->total == v->capacity / 4)
-        vector_resize(v, v->capacity / 2);
 }
 
 void vector_free(vector *v)
